@@ -55,21 +55,9 @@ def get_instance_metadata():
 
 
 def get_git_sha():
-    """Get the current Git commit SHA."""
+    """Get the Git commit SHA deployed to this instance."""
 
-    try:
-        result = subprocess.run(
-            ["git", "rev-parse", "--short", "HEAD"],
-            capture_output=True,
-            text=True,
-            timeout=2,
-            check=True
-        )
-
-        return result.stdout.strip()
-
-    except (subprocess.SubprocessError, FileNotFoundError):
-        return "unknown"
+    return os.getenv("DFT_GIT_SHA", "unknown")
 
 
 @app.route("/health")

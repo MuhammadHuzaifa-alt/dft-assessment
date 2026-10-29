@@ -15,6 +15,10 @@ mkdir -p /etc/dft
 # Store the assessment reference in a variable
 heron_tag="DFT-HZ-B7KF-S4VW"
 
+cat > /etc/dft/dft-app.env <<EOF
+DFT_GIT_SHA=${git_sha}
+EOF
+
 # Copy application files from Terraform template
 cat > /opt/dft-app/app.py <<'PYTHON'
 ${app_code}
@@ -46,6 +50,7 @@ Type=simple
 User=dftapp
 Group=dftapp
 WorkingDirectory=/opt/dft-app
+EnvironmentFile=/etc/dft/dft-app.env
 ExecStart=/opt/dft-app/venv/bin/python /opt/dft-app/app.py
 Restart=always
 RestartSec=3

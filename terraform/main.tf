@@ -169,6 +169,7 @@ resource "aws_instance" "dft_hz_ec2" {
   user_data = templatefile("${path.module}/../scripts/ec2_user_data.sh", {
     app_code     = file("${path.module}/../app.py")
     requirements = file("${path.module}/../requirements.txt")
+    git_sha      = var.git_sha
   })
 
   metadata_options {
