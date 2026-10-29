@@ -96,7 +96,19 @@ def health():
 
 @app.route("/")
 def home():
-    return "DFT Assessment - EC2 application is running"
+    return """
+    <html>
+        <head>
+            <title>DFT Assessment</title>
+        </head>
+        <body>
+            <h1>DFT Assessment</h1>
+            <p>served_by: ec2</p>
+            <p>CloudFront → EC2 → Nginx → Flask</p>
+            <p>Candidate: DFT-HZ-B7KF-S4VW</p>
+        </body>
+    </html>
+    """
 
 
 if __name__ == "__main__":
