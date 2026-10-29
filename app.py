@@ -98,16 +98,50 @@ def health():
 @app.route("/index.html")
 def home():
     return """
-    <html>
-        <head>
-            <title>DFT Assessment</title>
-        </head>
-        <body>
-            <h1>DFT Assessment</h1>
-            <p>served_by: ec2</p>
-            <p>CloudFront → EC2 → Nginx → Flask</p>
-            <p>Candidate: DFT-HZ-B7KF-S4VW</p>
-        </body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>DFT Assessment</title>
+
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+
+    <body>
+
+        <main class="container">
+
+            <section class="hero">
+
+                <div class="badge">
+                    AWS • CLOUDFRONT • EC2
+                </div>
+
+                <h1>
+                    DFT Assessment
+                </h1>
+
+                <div class="status">
+                    <span class="status-dot"></span>
+                    served_by: ec2
+                </div>
+
+                <p class="architecture">
+                    CloudFront → EC2 → Nginx → Flask
+                </p>
+
+                <p class="candidate">
+                    Candidate:
+                    <span>DFT-HZ-B7KF-S4VW</span>
+                </p>
+
+            </section>
+
+        </main>
+
+    </body>
     </html>
     """
 
