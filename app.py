@@ -95,6 +95,7 @@ def health():
 
 
 @app.route("/")
+@app.route("/index.html")
 def home():
     return """
     <html>
